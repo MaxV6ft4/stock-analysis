@@ -1,2 +1,2 @@
 # stock-analysis
-analysis on DQ stock for Steve's parents
+analysis on clean energy stocks for Steve's parents
