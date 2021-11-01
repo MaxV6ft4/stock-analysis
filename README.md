@@ -17,7 +17,7 @@ I created a new macro in VBA called AllStocksAnalysisRefactored, maintaining bot
 #### First loop
 The first loop initalized the ticker volumes array to zero, allowing it to reset once the loop reached the next ticker (represented by the letter i here).
 
-  For i = 0 To 11
+    For i = 0 To 11
     
           tickerVolumes(i) = 0
         
@@ -25,7 +25,7 @@ The first loop initalized the ticker volumes array to zero, allowing it to reset
 #### Second loop
 The second loop is key.  For each ticker, I increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  The difference is that in the original code I added the volume to the value of the cells in H individually by checking each row to make sure it contained the proper ticker.  Here, the volume is looped over all at once because, as an array the volume *immediately has access to the entire ticker index*, allowing it to instantly locate the correct ticker.  
 
-  For i = 2 To RowCount
+    For i = 2 To RowCount
     
             tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
 
@@ -49,7 +49,7 @@ Remember, the starting and ending prices are arrays as well here, so just like t
 #### Third loop
 The third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet, just like in the original code.  Here, however, the four arrays had access to the ticker index so they must be represented by a variable (i) containing the tickers.  
 
-  For i = 0 To 11
+    For i = 0 To 11
         
         Cells(4 + i, 1).Value = tickers(i)
         Cells(4 + i, 2).Value = tickerVolumes(i)
