@@ -17,29 +17,43 @@ I created a new macro in VBA called AllStocksAnalysisRefactored, maintaining bot
 #### First loop
 The first loop initalized the ticker volumes array to zero, allowing it to reset once the loop reached the next ticker (represented by the letter i here).
 
-SHOW CODE.
+  For i = 0 To 11
+    
+          tickerVolumes(i) = 0
+        
 
 #### Second loop
 The second loop is key.  For each ticker, I increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  The difference is that in the original code I added the volume to the value of the cells in H individually by checking each row to make sure it contained the proper ticker.  Here, the volume is looped over all at once because, as an array the volume *immediately has access to the entire ticker index*, allowing it to instantly locate the correct ticker.  
 
-SHOW CODE.
+  For i = 2 To RowCount
+    
+            tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
 
 All I had to do afterwards was make sure that the row selected in the data sheet was the first row containing the desired ticker by checking to see if the next row up did not contain that ticker.  If so, the selected row is where the starting price (in Column F of the data sheets) for the ticker began.  
 
-SHOW CODE.  
+    If Cells(i - 1, 1).Value <> tickers(tickerIndex) Then
+            
+                tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
+                
 
 Similarly, I made sure that the row selected in the sheet was the last row containing the desired ticker by checking to see if the next row down did not contain that ticker.  If so, the selected row would contain the ending price for the ticker.  
 
-SHOW CODE.  
+    If Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
+            
+                tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
 
 Remember, the starting and ending prices are arrays as well here, so just like the volume array they can instantly locate the correct ticker.  To allow the loop to continue from ticker to ticker without interruption I simply added 1 to the tickerIndex variable.
 
-SHOW CODE.
+      tickerIndex = tickerIndex + 1
 
 #### Third loop
 The third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet, just like in the original code.  Here, however, the four arrays had access to the ticker index so they must be represented by a variable (i) containing the tickers.  
 
-SHOW CODE.
+  For i = 0 To 11
+        
+        Cells(4 + i, 1).Value = tickers(i)
+        Cells(4 + i, 2).Value = tickerVolumes(i)
+        Cells(4 + i, 3).Value = (tickerEndingPrices(i) / tickerStartingPrices(i)) - 1
 
 ### Formatting
 I did not have to change any output formatting from the original code, but I did add a second run button to run only the refactored code.
