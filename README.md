@@ -83,14 +83,14 @@ The times needed to run my original code to output the results for 2017 and 2018
 ### Benefits and Drawbacks of Refactoring Code
 Refactoring code can be a huge benefit to both coder and viewer for mulitple reasons:
 
-*By modifying the conditionals, the coder can create more efficient loops and logic statements that can go through thousands of rows of data at a blistering rate.  This will result in less lines of code to create as well.
-*In the future, the coder will be able to view and/or edit any part of the code in a quicker amount of time.
-*The viewer should be able to understand the code more easily as a result.
+1. By modifying the conditionals, the coder can create more efficient loops and logic statements that can go through thousands of rows of data at a blistering rate.  This will result in less lines of code to create as well.
+2. In the future, the coder will be able to view and/or edit any part of the code in a quicker amount of time.
+3. The viewer should be able to understand the code more easily as a result.
 
 However, there are a couple drawbacks to refactoring that require attention:
 
-*It can be very easy to get lost in the code while refactoring.  This could lead to multiple bugs, resulting in the code not properly running.
-*In addition, the coder could also be unaware of the amount of time it could take to refactor the code.  If not prepared, the coder could be working for an exhorbitant amount of time.  This could be compounded by the first drawback taking place too.
+1. It can be very easy to get lost in the code while refactoring.  This could lead to multiple bugs, resulting in the code not properly running.
+2. In addition, the coder could also be unaware of the amount of time it could take to refactor the code.  If not prepared, the coder could be working for an exhorbitant amount of time.  This could be compounded by the first drawback taking place too.
 
 ### Application to this Particular Code
 
