@@ -69,7 +69,21 @@ The times needed to run my original code to output the results for 2017 and 2018
 ![2018 run time with refactored code](https://github.com/MaxV6ft4/stock-analysis/blob/main/Resources/VBA_Challenge_2018.png)
 
 ## Summary
-As shown above, refactoring code can help loop over thousands of rows of data in a split second.  Using an index as a variable inside arrays can speed up the looping process.  However, there is more room for error in writing the code.  It is important to make sure that new variables are correctly placed inside arrays and that each loop is closed.
 
-In the refactored code for the stock analysis, the run times are more than 0.6 seconds faster than they were in the original code.
-The ticker index expedited the looping process.  I did have to assign new variables for each loop.
+### Benefits and Drawbacks of Refactoring Code
+Refactoring code can be a huge benefit to both the coder and the program viewer for mulitple reasons:
+
+-By modifying the conditionals, the coder can create more efficient loops and logic statements that can go through thousands of rows of data at a blistering rate.  This will result in less lines of code as well.
+-In the future, the coder will be able to view and/or edit any part of the code in a shorter amount of time.
+-The viewer should be able to understand the code more easily as a result.
+
+However, there are a couple drawbacks to refactoring that require attention:
+
+-It can be very easy to get lost in the code while refactoring.  This could lead to multiple glitches in the original code, resulting in neither code properly running.
+-The coder could also be unaware of the time it will take to refactor the code.  If not prepared, the coder could be working for an exhorbitant amount of time.
+
+### Application to this Particular Code
+
+By adding a ticker index to the stock analysis code, I was able to create faster loops that went over the entire dataset at once.  In addition, by looping over the entire data the code did not require individual row checking, resulting in fewer if-then statements.  If I have to return to this code in the future, it will be very easy for me to locate a particular line in any of the for loops to edit.  
+
+Knowing what to loop over in this particular code was easy but creating the new loops were tricky.  There were multiple issues with the code upon adding the ticker index at first.  I had to create new variables for the iterations and had to assign values to each array before the loops began.  Also, I had to remove the if-then statements that checked to see if each row contained the correct ticker.  It was easy to get lost in the loops, but the text explaining each line of code proved to be a beneficial guide in getting unstuck.  That being said, refactoring this code as a whole did take a decent amount of time to complete.  I was lucky that the code was not that different as a whole than the original code.
