@@ -10,7 +10,7 @@ For this project I wrote a macro in VBA called AllStocksAnalysis to display the 
 
 [Energy Stock Analysis](https://github.com/MaxV6ft4/stock-analysis/blob/main/VBA_Challenge.xlsm)
 
-I created a new macro in VBA called AllStocksAnalysisRefactored, maintaining both the same output formatting and the same array of tickers as was written in the original code.  However, in this code I looped over the entire data *at once* instead of row by row.  To do this I created a ticker index, a variable that holds all the tickers inside itself, and initialized it to zero since in VBA the first number in an index is always zero.  Next, I created three new output arrays, one for ticker volumes, one for starting prices and one for ending prices.  Then I created three separate loops: the first to strictly loop over the volumes array, the second to loop over all the rows in the two data sheets (2017 and 2018), and the third to loop over the output arrays.
+I created a new macro in VBA called AllStocksAnalysisRefactored, maintaining both the same output formatting and the same array of tickers as was written in the original code (the tickers array's data type is string, since it is simply text).  However, in this code I looped over the entire data *at once* instead of row by row.  To do this I created a ticker index, a variable that holds all the tickers inside itself, and initialized it to zero since in VBA the first number in an index is always zero.  Next, I created three new output arrays, one for ticker volumes (data type: long, since the numbers will be in the hundreds of millions), one for starting prices and one for ending prices (data types: single, meaning only one decimal point).  Then I created three separate loops: the first to strictly loop over the volumes array, the second to loop over all the rows in the two data sheets (2017 and 2018), and the third to loop over the output arrays.
 
 ### Loops
 
@@ -48,10 +48,12 @@ Remember, the starting and ending prices are arrays as well, so just like the vo
 
         tickerIndex = tickerIndex + 1
         
+        End If
+        
     Next i
 
 #### Third loop
-The third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet, just like in the original code.  In this case, the four arrays had access to the ticker index so they must contain a variable (i) representing the rows in which the values will be outputted.  
+The third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet, just like in the original code.  In this case however, the four arrays had access to the ticker index so they have to contain a variable (i) representing the index.
 
     For i = 0 To 11
         
@@ -65,7 +67,7 @@ The third loop outputted the list of tickers plus total daily volumes and yearly
 I did not have to change any output formatting from the original code, but I did add a second run button on the output sheet to run only the refactored code.
 
 ### Outcome
-It is clearly evident that in 2017 just about every stock performed better than in 2018. Even DAQO had a whopping 199% increase in return!  Only one stock (ticker:TERP) had a dip in total daily volume and return (a mere 7%).  In 2018, total daily volumes and returns were awful.  Only two stocks (tickers:ENPH and RUN) had increases in both categories (400,000,000 in volume; 82% in return, and 240,000,000 in volume; 84% in return, respectively).
+It is clearly evident that in 2017 just about every stock performed better than in 2018. Even DAQO had a whopping 199% increase in return!  Only one stock (ticker:TERP) had a dip in return (a mere 7%).  In 2018, returns were awful.  Only two stocks (tickers:ENPH and RUN) performed well (total daily volume of 607,000,000; 82% increase in return, and total daily volume of 503,000,000; 84% increase in return, respectively).
 
 #### Run times
 The times needed to run my original code to output the results for 2017 and 2018 were 0.78 seconds and 0.77 seconds, respectively.  However, the time needed to run the refactored code was *significantly* less: 0.14 seconds for both 2017 and 2018!
@@ -85,11 +87,11 @@ Refactoring code can be a huge benefit to both coder and viewer for mulitple rea
 
 However, there are a couple drawbacks to refactoring that require attention:
 
--It can be very easy to get lost in the code while refactoring.  This could lead to multiple glitches, resulting in the code not properly running.
--In addition, the coder could also be unaware of the amount of time it could take to refactor the code.  If not prepared, the coder could be working for an exhorbitant amount of time.  This could be compounded by the first drawback too.
+-It can be very easy to get lost in the code while refactoring.  This could lead to multiple bugs, resulting in the code not properly running.
+-In addition, the coder could also be unaware of the amount of time it could take to refactor the code.  If not prepared, the coder could be working for an exhorbitant amount of time.  This could be compounded by the first drawback taking place, too.
 
 ### Application to this Particular Code
 
-By adding a ticker index to the stock analysis code, I was able to create faster loops that went over the entire dataset at once.  In addition, the code no longer required individual row checking, resulting in fewer if-then statements.  Should I have to return to this code in the future, it will be very easy for me to run it with a differnt amount of tickers, as the for loops would not have to be editted.
+By adding a ticker index to the stock analysis code, I was able to create faster loops that went over the entire dataset at once.  In addition, the code no longer required individual row checking, resulting in fewer if-then statements.  Should I have to return to this code in the future, it will be very easy for me to run it with a differnt amount of tickers (the code involved in looping over all the rows would not have to change).
 
-Knowing what to loop over in this code was easy but creating the new loops were tricky.  There were multiple issues with the code upon adding the ticker index at first.  I had to display the data type of and assign values to each array before the loops began.  The code would not run if the wrong data type was assigned to an array.  Also, I had to modify the if-then statements to make sure they only applied to checking the tickers and not checking each row.  It was easy to get lost in the for loops, but using text to explain each line of code proved to be a beneficial guide in getting unstuck.  Refactoring this code as a whole did take a decent amount of time to complete.  Luckily, the formatting remained the same as in the original code.
+Knowing what to loop over in this code was easy but creating the new loops was tricky.  There were multiple issues with the code upon adding the ticker index at first.  I had to display the data type of and assign values to each array before the loops began.  The code would not run if the wrong data type was assigned to an array.  Also, I had to modify the if-then statements to make sure they only applied to checking the first and last row of each ticker and not to checking each row individually.  It was easy to get lost in the second for loop, but using text to explain each line of code proved to be a beneficial guide in getting unstuck.  Refactoring this code as a whole did take a decent amount of time to complete.  Luckily, the formatting remained the same as in the original code.
