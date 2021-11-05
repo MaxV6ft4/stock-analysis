@@ -3,7 +3,7 @@
 ## Overview
 For this project I wrote a macro in VBA called AllStocksAnalysis to display the total daily volume and yearly return for each stock during the years 2017 and 2018.  I also created a run button in the output sheet for Steve to run the analysis on his own.  The code worked, but it involved looping through each individual row of stock.  Therefore I have refactored the code and have created a second run button specifically for this code.  The output displays the same results as those in the original code, but does so in a shorter amount of time.
 
-## Results
+## Analysis
 
 [Energy Stock Analysis](https://github.com/MaxV6ft4/stock-analysis/blob/main/VBA_Challenge.xlsm)
 
@@ -21,7 +21,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
     
                 tickerVolumes(i) = 0
         
-    - the second loop increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  Here, the volumes are looped over all at once because, as an array they *immediately have access to the entire ticker index*, allowing them to instantly locate the correct ticker.  Using the letter i to represent the number of rows, I began the loop as follows:
+    - the second loop increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  Here, the volumes are looped over all at once because they *immediately have access to the entire ticker index*, allowing them to instantly locate the correct ticker.  Using the letter i to represent the number of rows, I began the loop as follows:
 
             For i = 2 To RowCount
     
