@@ -21,7 +21,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
     
                 tickerVolumes(i) = 0
         
-    - the second loop increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  Here, the volumes are looped over all at once because they *immediately have access to the entire ticker index*, allowing them to instantly locate the correct ticker.  Using the letter i to represent the number of rows, I began the loop as follows:
+    - the second loop increased the volume by adding the inital volume (zero) to the value of each cell in colummn H of the two data sheets.  Here, the volumes were looped over all at once because they *immediately had access to the entire ticker index*, allowing them to instantly locate the correct ticker.  Using the letter i to represent the number of rows, I began the loop as follows:
 
             For i = 2 To RowCount
     
@@ -44,7 +44,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
 
                 tickerIndex = tickerIndex + 1
         
-    - the third loop outputted the list of tickers plus total daily volume and yearly return for each ticker to the All Stocks Analysis sheet.  Here, the four arrays had access to the ticker index so they have to contain a variable (i) representing the index.
+    - the third loop outputted the list of tickers plus total daily volume and yearly return for each ticker to the All Stocks Analysis sheet.  Here, the four arrays had access to the ticker index so they had to contain a variable (i) representing the index.
 
             For i = 0 To 11
         
