@@ -3,11 +3,11 @@
 ## Overview
 For this project I wrote a macro in VBA called AllStocksAnalysis to display the total daily volume and yearly return for each stock during the years 2017 and 2018.  I also created a run button in the output sheet for Steve to run the analysis on his own.  The code worked, but it involved looping through each individual row of stock.  Therefore I have refactored the code and have created a second run button specifically for this code.  The output displays the same results as those in the original code, but does so in a shorter amount of time.
 
-## Analysis
+## Results
 
 [Energy Stock Analysis](https://github.com/MaxV6ft4/stock-analysis/blob/main/VBA_Challenge.xlsm)
 
-### Refactored Code
+### Running The Refactored Code
 I looped over the entire data *at once* instead of row by row in the refactored code.  To do so, I created:
 - a ticker index (held all twelve tickers inside) and initialized it to zero since in VBA the first number in an index is always zero.  
 - three new output arrays:
@@ -15,7 +15,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
     - starting prices
     - ending prices
 - three separate loops:
-    - the first loop initalized the ticker volumes array to zero, allowing it to reset once the loop reached the next ticker (represented by the letter i here).
+    - the first loop initalized the ticker volumes array to zero, allowing it to reset once the next ticker (represented by the letter i here), was reached.
 
             For i = 0 To 11
     
@@ -44,7 +44,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
 
                 tickerIndex = tickerIndex + 1
         
-    - the third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet.  Here, the four arrays had access to the ticker index so they have to contain a variable (i) representing the index.
+    - the third loop outputted the list of tickers plus total daily volume and yearly return for each ticker to the All Stocks Analysis sheet.  Here, the four arrays had access to the ticker index so they have to contain a variable (i) representing the index.
 
             For i = 0 To 11
         
@@ -54,7 +54,7 @@ I looped over the entire data *at once* instead of row by row in the refactored 
 
 ### Results
 For the year 2017:
-- just about every stock performed better than in 2018.
+- just about every stock performed better than it did in 2018.
 - only one stock (ticker:TERP) had a dip in return (a mere 7%).  
 
 For 2018:
@@ -63,10 +63,10 @@ For 2018:
     - ticker:RUN had a total daily volume of 503,000,000 and an 84% increase in return.
 
 Run times:
- - original code run times:
+ - original code:
     - 0.78 seconds for 2017 results
     - 0.77 seconds for 2018 results
- - refactored code run times:
+ - refactored code:
     - 0.14 seconds for 2017 results
     - 0.14 seconds for 2018 results
  
