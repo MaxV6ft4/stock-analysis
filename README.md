@@ -1,7 +1,7 @@
 # Analysis of Energy Stock Performance
 
 ## Overview
-For this project I wrote a macro in VBA called AllStocksAnalysis to display the total daily volumes and yearly returns for each stock during the two years provided.  I also created a run button in the output sheet for Steve to run the analysis on his own.  The code worked, but it involved looping through each individual row of stock.  Therefore I have refactored the code and have created a second run button specifically for this code.  The output displays the same results as those in the original code, but does so in a shorter amount of time.
+For this project I wrote a macro in VBA called AllStocksAnalysis to display the total daily volume and yearly return for each stock during the years 2017 and 2018.  I also created a run button in the output sheet for Steve to run the analysis on his own.  The code worked, but it involved looping through each individual row of stock.  Therefore I have refactored the code and have created a second run button specifically for this code.  The output displays the same results as those in the original code, but does so in a shorter amount of time.
 
 ## Results
 
@@ -46,11 +46,11 @@ I looped over the entire data *at once* instead of row by row in the refactored 
         
     - the third loop outputted the list of tickers plus total daily volumes and yearly returns for each ticker to the All Stocks Analysis sheet.  Here, the four arrays had access to the ticker index so they have to contain a variable (i) representing the index.
 
-    For i = 0 To 11
+            For i = 0 To 11
         
-        Cells(4 + i, 1).Value = tickers(i)
-        Cells(4 + i, 2).Value = tickerVolumes(i)
-        Cells(4 + i, 3).Value = (tickerEndingPrices(i) / tickerStartingPrices(i)) - 1
+                    Cells(4 + i, 1).Value = tickers(i)
+                    Cells(4 + i, 2).Value = tickerVolumes(i)
+                    Cells(4 + i, 3).Value = (tickerEndingPrices(i) / tickerStartingPrices(i)) - 1
 
 ### Results
 For the year 2017:
@@ -58,7 +58,7 @@ For the year 2017:
 - only one stock (ticker:TERP) had a dip in return (a mere 7%).  
 
 For 2018:
-- only two stocks (tickers:ENPH and RUN) performed well 
+- only two stocks (tickers:ENPH and RUN) performed well.
     - ticker:ENPH had a total daily volume of 607,000,000 and an 82% increase in return.
     - ticker:RUN had a total daily volume of 503,000,000 and an 84% increase in return.
 
